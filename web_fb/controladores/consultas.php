@@ -11,25 +11,27 @@ class consultas
     if ($bodega == '1' && $categoria == '1') {
       $miScript = "select b.NOMBRE_BODEGA, m.NOMBRE_ITEM, d.CANTIDAD from BODEGA
       b, MAQUINARIA_MATERIALES m, DETALLE_BODEGA d where b.ID_BODEGA = d.ID_BODEGA
-      and m.ID_ITEM = d.ID_ITEM order by m.NOMBRE_ITEM";
+      and m.ID_ITEM = d.ID_ITEM and d.CANTIDAD > 0 order by m.NOMBRE_ITEM";
       return $miScript;
     }if ($categoria == '1') {
       $miScript = "select b.NOMBRE_BODEGA, m.NOMBRE_ITEM, d.CANTIDAD, c.NOMBRE_CATEGORIA,
       u.NOMBRE_UNIDAD, u.ABREBIATURA_UNIDAD, m.ID_ITEM from BODEGA b, MAQUINARIA_MATERIALES m, DETALLE_BODEGA d,
       CATEGORIA c, UNIDAD u WHERE b.ID_BODEGA = d.ID_BODEGA and m.ID_ITEM = d.ID_ITEM
-      and m.ID_CATEGORIA = c.ID_CATEGORIA and m.ID_UNIDAD = u.ID_UNIDAD and b.NOMBRE_BODEGA ='".utf8_encode($bodega)."' order by m.NOMBRE_ITEM";
+      and m.ID_CATEGORIA = c.ID_CATEGORIA and m.ID_UNIDAD = u.ID_UNIDAD and b.NOMBRE_BODEGA ='".utf8_encode($bodega)."'
+      and d.CANTIDAD > 0 order by m.NOMBRE_ITEM";
       return $miScript;
     } if($bodega == '1'){
       $miScript = "select b.NOMBRE_BODEGA, m.NOMBRE_ITEM, d.CANTIDAD from BODEGA
       b, MAQUINARIA_MATERIALES m, DETALLE_BODEGA d where b.ID_BODEGA = d.ID_BODEGA
       and m.ID_ITEM = d.ID_ITEM and m.ID_CATEGORIA = (select c.ID_CATEGORIA from categoria c where c.NOMBRE_CATEGORIA = '".$categoria."')
-      order by m.NOMBRE_ITEM";
+      and d.CANTIDAD > 0 order by m.NOMBRE_ITEM";
       return $miScript;
     }else {
       $miScript = "select b.NOMBRE_BODEGA, m.NOMBRE_ITEM, d.CANTIDAD from BODEGA
       b, MAQUINARIA_MATERIALES m, DETALLE_BODEGA d where b.ID_BODEGA = d.ID_BODEGA
       and m.ID_ITEM = d.ID_ITEM and b.NOMBRE_BODEGA ='".utf8_encode($bodega)."'
-      and m.ID_CATEGORIA = (select c.ID_CATEGORIA from categoria c where c.NOMBRE_CATEGORIA = '".utf8_encode($categoria)."') order by m.NOMBRE_ITEM";
+      and m.ID_CATEGORIA = (select c.ID_CATEGORIA from categoria c where c.NOMBRE_CATEGORIA = '".utf8_encode($categoria)."')
+      and d.CANTIDAD > 0 order by m.NOMBRE_ITEM";
       return $miScript;
     }
   }//function sqlDetalleBodega
@@ -38,7 +40,7 @@ class consultas
     $miScript="select m.ID_ITEM, m.NOMBRE_ITEM, u.NOMBRE_UNIDAD, u.ABREBIATURA_UNIDAD, c.NOMBRE_CATEGORIA, d.CANTIDAD
     from DETALLE_BODEGA d, BODEGA b, MAQUINARIA_MATERIALES m, UNIDAD u, CATEGORIA c
     WHERE b.ID_BODEGA = d.ID_BODEGA and d.ID_ITEM = m.ID_ITEM and c.ID_CATEGORIA = m.ID_CATEGORIA and u.ID_UNIDAD = m.ID_UNIDAD
-    and b.ID_BODEGA = '".utf8_encode($bodega)."'
+    and b.ID_BODEGA = '".utf8_encode($bodega)."' and d.CANTIDAD > 0
     ORDER by m.NOMBRE_ITEM";
     return $miScript;
   }
@@ -54,7 +56,7 @@ class consultas
 
   function sqlBodega($id){
     $miScript = "select b.ID_BODEGA, b.NOMBRE_BODEGA, d.CALLE_PRINCIPAL, d.CALLE_SECUNDARIA,
-    d.NUMERO, d.REFERENCIAS, c.NOMBRE_CIUDAD from BODEGA b, direccion d, ciudad c where
+    d.NUMERO, d.REFERENCIAS, c.NOMBRE_CIUDAD from BODEGA b, DIRECCION d, CIUDAD c where
     b.ID_DIRECCION = d.ID_DIRECCION and d.ID_CIUDAD = c.ID_CIUDAD and b.ID_BODEGA like '".$id."%'";
     return $miScript;
   }//function sqlBodega
@@ -232,7 +234,7 @@ from USUARIO u, ROL r WHERE r.ID_ROL = u.ID_ROL";
   }
 
   function sqlAgregarUsuario($ci, $nombre, $apellido, $telefono, $usuario, $clave, $tipo){
-    $miScript = "insert into usuario (CI_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, TELEFONO_USUARIO, ALIAS_USUARIO, CLAVE_USUARIO, ID_ROL)
+    $miScript = "insert into USUARIO (CI_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, TELEFONO_USUARIO, ALIAS_USUARIO, CLAVE_USUARIO, ID_ROL)
     VALUES ('".$ci."', '".$nombre."', '".$apellido."', '".$telefono."', '".$usuario."', SHA1('".$clave."'), '".$tipo."')";
     return $miScript;
   }

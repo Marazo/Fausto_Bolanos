@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-
 <?php
 
 include("../controladores/ingreso.php");
 include("../controladores/consultas.php");
+?>
+
+<!DOCTYPE html>
+
+<?php
 
 $consulta = new consultas();
 

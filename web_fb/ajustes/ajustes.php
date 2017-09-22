@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 include("../controladores/ingreso.php");
@@ -7,7 +6,7 @@ include("../controladores/consultas.php");
 $consulta = new consultas();
 
  ?>
-
+<!DOCTYPE html>
 <html>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">

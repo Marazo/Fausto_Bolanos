@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 include("../controladores/ingreso.php");
@@ -6,6 +5,9 @@ include("../controladores/consultas.php");
 
 $consulta = new consultas();
 
+ ?>
+<!DOCTYPE html>
+<?php
 if (isset($_POST['aceptar'])) {
 
   $de = $_POST['de'];

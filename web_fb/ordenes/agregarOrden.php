@@ -1,4 +1,11 @@
+<?php
 
+include("../controladores/ingreso.php");
+include("../controladores/consultas.php");
+
+$consulta = new consultas();
+
+ ?>
 <div class="w3-responsive">
   <table class="w3-table w3-bordered w3-animate-top w3-striped w3-centered">
     <tr class="w3-signal-black">
@@ -11,10 +18,6 @@
     </tr>
 
     <?php
-    include("../controladores/ingreso.php");
-    include("../controladores/consultas.php");
-
-    $consulta = new consultas();
 
     $id = $_POST['id'];
     $_SESSION['tipo_de_orden'] = $_POST['tipo'];

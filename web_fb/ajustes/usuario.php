@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 include("../controladores/ingreso.php");
@@ -7,7 +6,7 @@ include("../controladores/consultas.php");
 $consulta = new consultas();
 
  ?>
-
+<!DOCTYPE html>
 <html>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -137,8 +136,8 @@ $consulta = new consultas();
                   echo "
                   <tr>
                     <th>".$filas['CI_USUARIO']."</th>
-                    <th>".utf8_encode($filas['NOMBRE_USUARIO'])."</th>
-                    <th>".utf8_encode($filas['APELLIDO_USUARIO'])."</th>
+                    <th>".$filas['NOMBRE_USUARIO']."</th>
+                    <th>".$filas['APELLIDO_USUARIO']."</th>
                     <th>".$filas['ALIAS_USUARIO']."</th>
                     <th>".$filas['TELEFONO_USUARIO']."</th>
                     <th>".utf8_encode($filas['NOMBRE_ROL'])."</th>

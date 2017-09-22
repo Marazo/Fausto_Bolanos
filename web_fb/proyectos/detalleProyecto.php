@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 include("../controladores/ingreso.php");
@@ -8,6 +7,7 @@ $consulta = new consultas();
 
 $id = $_SESSION['Proyecto_id'];
 ?>
+<!DOCTYPE html>
 
 <html>
 

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 include("../controladores/ingreso.php");
@@ -9,6 +8,8 @@ $consulta = new consultas();
 $hoja = $_SESSION['hoja_de_control'];
 
  ?>
+
+<!DOCTYPE html>
 
 <html>
 

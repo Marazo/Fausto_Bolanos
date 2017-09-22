@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-
 <?php
 
 include("../controladores/ingreso.php");
 include("../controladores/consultas.php");
+?>
+
+<!DOCTYPE html>
+
+<?php
 
 $consulta = new consultas();
 
@@ -140,15 +143,18 @@ if (isset($_POST['aceptar'])) {
               <th></th>
             </tr>
             <?php
-            if ($result = mysqli_query($mysqli, $consulta->sqlDetalleBodega($nombre, '1'))) {
+            if ($result = mysqli_query($mysqli, "select b.NOMBRE_BODEGA, m.NOMBRE_ITEM, d.CANTIDAD, c.NOMBRE_CATEGORIA,
+            u.NOMBRE_UNIDAD, u.ABREBIATURA_UNIDAD, m.ID_ITEM from BODEGA b, MAQUINARIA_MATERIALES m, DETALLE_BODEGA d,
+            CATEGORIA c, UNIDAD u WHERE b.ID_BODEGA = d.ID_BODEGA and m.ID_ITEM = d.ID_ITEM
+            and m.ID_CATEGORIA = c.ID_CATEGORIA and m.ID_UNIDAD = u.ID_UNIDAD and b.NOMBRE_BODEGA ='".$nombre."' order by m.NOMBRE_ITEM")) {
               while ($filas = mysqli_fetch_array($result)) {
                 echo "
                 <tr>
                   <th><input style='display:none' type='text' name='id[]' value='".utf8_encode($filas['ID_ITEM'])."' size='1' readonly></th>
-                  <th>".utf8_encode($filas['nombre_item'])."</th>
+                  <th>".utf8_encode($filas['NOMBRE_ITEM'])."</th>
                   <th>".utf8_encode($filas['NOMBRE_CATEGORIA'])."</th>
                   <th>".utf8_encode($filas['NOMBRE_UNIDAD'])." [ ".utf8_encode($filas['ABREBIATURA_UNIDAD'])." ]</th>
-                  <th>".$filas['cantidad']."</th>
+                  <th>".$filas['CANTIDAD']."</th>
                   <th><input type='number' size='5' name='valor[]' value='0'></th>
                 </tr>
                 ";

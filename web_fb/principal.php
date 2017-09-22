@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 include("controladores/ingreso.php");
@@ -6,6 +5,7 @@ include("controladores/consultas.php");
 
 $consulta = new consultas();
  ?>
+<!DOCTYPE html>
 
 <html>
 
@@ -66,7 +66,7 @@ $consulta = new consultas();
         <?php } ?>
         <button class="w3-bar-item w3-button" id="cerrar">Cerrar seci&oacute;n</button>
       </div>
-      <h1><?php echo 'BIENVENIDO '.utf8_encode($filas['nombre_usuario']).' '.utf8_encode($filas['apellido_usuario']);?></h1>
+      <h1><?php echo 'BIENVENIDO '.utf8_encode($filas['NOMBRE_USUARIO']).' '.utf8_encode($filas['APELLIDO_USUARIO']);?></h1>
 
       <button type="button" id="datos" class="w3-button w3-round-xxlarge w3-white">Cambiar datos personales</button>&nbsp;&nbsp;&nbsp;&nbsp;
       <button type="button" id="Cclave" class="w3-button w3-round-xxlarge w3-white">Cambiar clave</button>
@@ -74,13 +74,13 @@ $consulta = new consultas();
       <form action="cambioDatosPersonales.php" method="post">
         <div style="display:none" id="datosPersonales" class="w3-animate-left">
           <h6>NOMBRE</h6>
-          <input type="text" class="nombre" value="<?php echo utf8_encode($filas['nombre_usuario']); ?>" onKeyUp="this.value=this.value.toUpperCase();">
+          <input type="text" class="nombre" value="<?php echo utf8_encode($filas['NOMBRE_USUARIO']); ?>" onKeyUp="this.value=this.value.toUpperCase();">
           <h6>APELLIDO</h6>
-          <input type="text" class="apellido" value="<?php echo utf8_encode($filas['apellido_usuario']); ?>" onKeyUp="this.value=this.value.toUpperCase();">
+          <input type="text" class="apellido" value="<?php echo utf8_encode($filas['APELLIDO_USUARIO']); ?>" onKeyUp="this.value=this.value.toUpperCase();">
           <h6>NOMBRE DE USUARIO</h6>
-          <input type="text" class="alias" value="<?php echo utf8_encode($filas['alias_usuario']); ?>">
+          <input type="text" class="alias" value="<?php echo utf8_encode($filas['ALIAS_USUARIO']); ?>">
           <h6>TELEFONO</h6>
-          <input type="number" class="telefono" value="<?php echo utf8_encode($filas['telefono_usuario']); ?>"><br><br>
+          <input type="number" class="telefono" value="<?php echo utf8_encode($filas['TELEFONO_USUARIO']); ?>"><br><br>
           <button type="button" id="datosUsuario" class="w3-button w3-round-xxlarge w3-signal-black">Aceptar</button>
         </div>
       </form>

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 include("../controladores/ingreso.php");
@@ -9,6 +8,7 @@ $hoja = $_SESSION['hoja_de_control'];
 
  ?>
 
+<!DOCTYPE html>
 <html>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
