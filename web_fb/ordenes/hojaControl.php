@@ -54,7 +54,7 @@ $consulta = new consultas();
         type: 'POST',
         data: { hoja: valores},
         success: function(){
-          var myWindow = window.open("detalleHoja.php", "", "width=780,height=1000");
+          window.open("detalleHoja.php");
         }
       });
     });
@@ -64,7 +64,7 @@ $consulta = new consultas();
 
   <head>
     <meta charset="utf-8">
-    <title>Principal</title>
+    <title>Ordenes</title>
   </head>
   <body>
     <div class="w3-container w3-wide">
@@ -112,8 +112,8 @@ $consulta = new consultas();
               echo "
               <tr class='w3-hover-green'>
                 <td>".$filas['ID_HOJA']."</td>
-                <th>".utf8_encode($filas['NOMBRE_PROYECTO'])."</th>
-                <th>".utf8_encode($filas['NOMBRE_BODEGA'])."</th>
+                <th>".$filas['NOMBRE_PROYECTO']."</th>
+                <th>".$filas['NOMBRE_BODEGA']."</th>
                 <th>".$filas['FECHA_HOJA']."</th>
                 <th class='boton'><u class='w3-bar-item w3-button'>Seleccionar</u></th>
               </th>";

@@ -29,9 +29,9 @@ $consulta = new consultas();
           echo "
           <tr class='w3-hover-green'>
             <th><input type='checkbox' class='w3-check' name='chk[]' value='".$filas['ID_ITEM']."'></th>
-            <th>".utf8_encode($filas['NOMBRE_ITEM'])."</th>
-            <th>".utf8_encode($filas['NOMBRE_UNIDAD'])." [ ".utf8_encode($filas['ABREBIATURA_UNIDAD'])." ]</th>
-            <th>".utf8_encode($filas['NOMBRE_CATEGORIA'])."</th>
+            <th>".$filas['NOMBRE_ITEM']."</th>
+            <th>".$filas['NOMBRE_UNIDAD']." [ ".$filas['ABREBIATURA_UNIDAD']." ]</th>
+            <th>".$filas['NOMBRE_CATEGORIA']."</th>
             <th>".$filas['CANTIDAD']."</th>
             <th><input type='number' size='5' name='valor[".$filas['ID_ITEM']."]' value='0'></th>
           </tr>";
@@ -43,9 +43,9 @@ $consulta = new consultas();
           echo "
           <tr class='w3-hover-green'>
             <th><input type='checkbox' class='w3-check' name='chk[]' value='".$filas['ID_ITEM']."'></th>
-            <th>".utf8_encode($filas['NOMBRE_ITEM'])."</th>
-            <th>".utf8_encode($filas['NOMBRE_UNIDAD'])." [ ".utf8_encode($filas['ABREBIATURA_UNIDAD'])." ]</th>
-            <th>".utf8_encode($filas['NOMBRE_CATEGORIA'])."</th>
+            <th>".$filas['NOMBRE_ITEM']."</th>
+            <th>".$filas['NOMBRE_UNIDAD']." [ ".$filas['ABREBIATURA_UNIDAD']." ]</th>
+            <th>".$filas['NOMBRE_CATEGORIA']."</th>
             <th>".$filas['SUM(d.CANTIDAD_DESPACHO)']."</th>
             <th><input type='number' size='5' name='valor[".$filas['ID_ITEM']."]' value='0'></th>
           </tr>";

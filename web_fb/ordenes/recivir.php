@@ -111,7 +111,7 @@ $consulta = new consultas();
               echo "
               <tr class='w3-hover-green'>
                 <td>".$filas['ID_HOJA']."</td>
-                <th>".utf8_encode($filas['APELLIDI_DUENO'])." ".utf8_encode($filas['NOMBRE_DUENO'])."</th>
+                <th>".$filas['APELLIDI_DUENO']." ".$filas['NOMBRE_DUENO']."</th>
                 <th>".$filas['PLACAS']."</th>
                 <th>".$filas['NOMBRE_PROYECTO']."</th>
                 <th class='boton'><u class='w3-bar-item w3-button'>Seleccionar</u></th>

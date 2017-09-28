@@ -28,7 +28,7 @@ $hoja = $_SESSION['hoja_de_control'];
 
   <head>
     <meta charset="utf-8">
-    <title>Principal</title>
+    <title>Hoja de control</title>
   </head>
   <body>
     <div class="w3-container w3-wide">

@@ -7,7 +7,7 @@ $placas = $_POST['placas'];
 $descripcion = $_POST['descripcion'];
 $dueno = $_POST['dueno'];
 
-if ($dueno = '') {
+if ($dueno == 'sindueno') {
   echo "no";
 }else {
   mysqli_query($mysqli, $consulta->sqlAgregarautomovil($placas, $descripcion));

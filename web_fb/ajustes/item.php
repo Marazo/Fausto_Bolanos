@@ -11,6 +11,7 @@ $consulta = new consultas();
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-signal.css">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
  <script type="text/javascript">
@@ -67,6 +68,19 @@ $consulta = new consultas();
          }
        });
      });
+
+     $(".editar").click(function(){
+       var editarItem = $(this).parents("tr").find("td").html();
+       $.ajax({
+         url: '../controladores/item.php',
+         type: 'POST',
+         data: { item: editarItem},
+         success: function(){
+           window.location = "editarItem.php";
+         }
+       });
+     });
+
    });
  </script>
 
@@ -119,20 +133,21 @@ $consulta = new consultas();
 
       <table class="w3-table w3-bordered w3-animate-top">
         <tr class="w3-signal-black">
-          <th>ID</th>
           <th>ITEM</th>
-          <th>UMIDAD</th>
+          <th>UNIDAD</th>
           <th>CATEGORIA</th>
+          <th></th>
         </tr>
         <?php
         if ($result = mysqli_query($mysqli, $consulta->sqlItem())) {
           while ($filas = mysqli_fetch_array($result)) {
             echo "
             <tr>
-              <th>".utf8_encode($filas['ID_ITEM'])."</th>
+              <td style='display:none'>".utf8_encode($filas['ID_ITEM'])."</td>
               <th>".utf8_encode($filas['NOMBRE_ITEM'])."</th>
               <th>".utf8_encode($filas['NOMBRE_UNIDAD'])."</th>
               <th>".utf8_encode($filas['NOMBRE_CATEGORIA'])."</th>
+              <th class='editar'><u class='w3-bar-item w3-button'><i class='material-icons'>create</i></u></th>
             </tr>
             ";
           }

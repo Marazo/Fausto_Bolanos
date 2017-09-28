@@ -79,6 +79,7 @@ $consulta = new consultas();
       });
     });
     $(".veiculo").click(function(){
+      alert($(".ci").val());
       $.ajax({
         url: "../funciones/agregar/agregarVeiculo.php",
         type: "POST",
@@ -88,9 +89,10 @@ $consulta = new consultas();
           dueno: $(".ci").val()
         },
         success: function(respuesta){
-          if (respuesta = 'no') {
+          if (respuesta == 'no') {
             alert("FALTAN DATOS");
-          }else if (espuesta = 'si') {
+          }else if (respuesta == 'si') {
+            alert("TRANSACCION EXITOSA");
             window.location = "veiculo.php";
           }
         }
@@ -131,11 +133,11 @@ $consulta = new consultas();
       <h6>VEICULO:</h6>
       <input type="text" class="placas"  placeholder="Placas">
       <select class="w3-button w3-white w3-border w3-round-large ci" name="ci">
-        <option value="">Due&ntilde;o</option>
+        <option value="sindueno">Due&ntilde;o</option>
         <?php  if ($result = mysqli_query($mysqli, $consulta->sqlDueno())) {
           while ($filas = mysqli_fetch_array($result)) {
             echo "
-            <option value='".$filas['CI_DUENO']."'>".utf8_encode($filas['APELLIDI_DUENO'])." ".utf8_encode($filas['NOMBRE_DUENO'])."</option>";
+            <option value='".$filas['CI_DUENO']."'>".$filas['APELLIDI_DUENO']." ".$filas['NOMBRE_DUENO']."</option>";
           }
         }?>
       </select><br><br>
@@ -175,7 +177,7 @@ $consulta = new consultas();
       <div class="w3-responsive" id="tablaVeiculos" style="display:none">
         <table class="w3-table w3-bordered w3-animate-top w3-striped">
           <tr class="w3-signal-black">
-            <th>veiculo</th>
+            <th>Veiculo</th>
             <th>Due&ntilde;o</th>
             <th>Telefono</th>
           </tr>
@@ -185,7 +187,7 @@ $consulta = new consultas();
               echo "
               <tr>
                 <th>".utf8_encode($filas['PLACAS'])."</th>
-                <th>".utf8_encode($filas['APELLIDI_DUENO'])." ".utf8_encode($filas['NOMBRE_DUENO'])."</th>
+                <th>".utf8_encode($filas['APELLIDI_DUENO'])." ".$filas['NOMBRE_DUENO']."</th>
                 <th>".utf8_encode($filas['TELEFONO'])."</th>
               </tr>
               ";

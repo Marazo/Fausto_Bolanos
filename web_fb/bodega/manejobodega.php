@@ -164,7 +164,7 @@ if (isset($_POST['aceptar'])) {
           </table><br><br>
           <input class="w3-button w3-signal-black w3-display-bottomleft" type="submit" name="aceptar" value="Aceptar">
         </form>
-        <button id="agregar" class="w3-button w3-signal-black w3-display-bottommiddle">Agregar <i class="w3-small material-icons">add</i></button>
+        <button id="agregar" class="w3-button w3-signal-black w3-display-bottommiddle">Agregar <i class="w3-small material-icons">add_circle_outline</i></button>
       </div>
 
     </div>

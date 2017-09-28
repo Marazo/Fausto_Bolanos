@@ -72,7 +72,7 @@ $hoja = $_SESSION['hoja_de_control'];
 
   <head>
     <meta charset="utf-8">
-    <title>Principal</title>
+    <title>Ordenes</title>
   </head>
   <body>
     <div class="w3-bar w3-signal-red">

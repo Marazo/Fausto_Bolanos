@@ -118,7 +118,7 @@ if (isset($_POST['aceptar'])) {
 
   <head>
     <meta charset="utf-8">
-    <title>Principal</title>
+    <title>Ordenes</title>
   </head>
   <body>
     <div class="w3-container w3-wide">

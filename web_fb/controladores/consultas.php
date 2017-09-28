@@ -193,7 +193,7 @@ from USUARIO u, ROL r WHERE r.ID_ROL = u.ID_ROL";
   {
     $miScript = "select d.NOMBRE_DUENO, d.APELLIDI_DUENO, d.TELEFONO, v.PLACAS
     from TRANSPORTE t, DUENO d, VEICULO v
-    WHERE d.CI_DUENO = t.CI_DUENO and v.PLACAS = t.PLACAS and t.DUENO_TRANSPORTE = 1
+    WHERE d.CI_DUENO = t.CI_DUENO and v.PLACAS = t.PLACAS
     ORDER by v.PLACAS";
     return $miScript;
   }
@@ -265,18 +265,23 @@ from USUARIO u, ROL r WHERE r.ID_ROL = u.ID_ROL";
 
   function sqlAgregarautomovil($placas, $descripcion){
     $miScript = "insert into VEICULO (PLACAS, DESCRIPCION_VEICULO)
-    VALUES ('".$placas."', '".$descripcion."')";
+    VALUES ('".$placas."', '".$descripcion."');";
     return $miScript;
   }
 
   function sqlAgregarVeiculo($placas, $dueno){
-    $miScript = "insert into TRANSPORTE (CI_DUENO, PLACAS, DUENO_TRANSPORTE)
-    VALUES ('".$dueno."', '".$placas."', 1)";
+    $miScript = "insert into TRANSPORTE (CI_DUENO, PLACAS)
+    VALUES ('".$dueno."', '".$placas."');";
     return $miScript;
   }
 
   function sqlActualizarCantidad($bodega, $item, $cantidad, $tipo){
     $miScript = "update DETALLE_BODEGA set CANTIDAD = (CANTIDAD ".$tipo." ".$cantidad.") where DETALLE_BODEGA.ID_BODEGA = ".$bodega." and DETALLE_BODEGA.ID_ITEM = ".$item." ";
+    return $miScript;
+  }
+
+  function sqlEditarItem($nombre, $unidad, $categoria, $id){
+    $miScript = "update MAQUINARIA_MATERIALES SET ID_CATEGORIA = '".$categoria."', ID_UNIDAD = '".$unidad."', NOMBRE_ITEM = '".$nombre."' WHERE ID_ITEM = '".$id."'";
     return $miScript;
   }
 
